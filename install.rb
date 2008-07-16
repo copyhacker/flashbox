@@ -1,5 +1,6 @@
-# Install hook code here
 require 'fileutils'
+
+puts ''
 
 %w{ images stylesheets javascripts }.each do |dir|
   puts "Installing #{dir}"
@@ -7,5 +8,7 @@ require 'fileutils'
     FileUtils.cp entry, File.join(RAILS_ROOT, "public/#{dir}")
   end
 end
+
+puts ''
 
 puts IO.read(File.join(File.dirname(__FILE__), 'README'))
