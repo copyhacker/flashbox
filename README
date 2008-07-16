@@ -1,38 +1,24 @@
-Feedback
+Flashbox
 ========
 
-This is a trivial plugin to render feedback messages to the user. A feedback
-message is a string, paired with a level. The level is a string suggesting
-how the message ought to be displayed. The value of level will usually be one
-of the following:
-- info
-- warning
-- error
+A simple plugin to render application feedback to the user in a dialog-style lightbox.
+Uses JQuery and Chris Wanstrath's Facebox (both included).  Based heavily upon Jeremy Voorhis' feedback plugin.
 
-This plugin installs a stylesheet, feedback.css, which is not required, but
-provides a reasonable default look and feel, inspired by GMail.
+JQuery: http://jquery.com
+Facebox: http://famspam.com/facebox/
 
-Example
-=======
 
-Feedback messages are appended to the queue from your controllers by using the
-add_feedback method.
->> add_feedback("Hello, user!", "info")
+Usage
+=====
 
-Shortcut methods are provided for adding feedback at the most common levels.
->> add_info("Hello, user!") # Identical to the example above.
+Controller:
+add_info('Interesting information')
+add_warning('Watch out!')
+add_error('Everything broken!')
 
-The easiest way to bootstrap the feedback js is to use the feedback_init helper
-in your layouts.
-<%= javascript_include_tag 'feedback' # Include feedback.js first! %>
-<%= stylesheet_link_tag 'feedback' %>
-<%= feedback_init %>
 
-You may also add feedback via RJS, provided that feedback has been bootstrapped
-in the page you are updating.
->> render :update do |page|
->>   page << "feedback.info('Hello, AJAX!');"
->> end
-
-Jeremy Voorhis, 4 September 2007
-Copyright (c) 2007 Elevated Rails, Inc.
+Application layout:
+<%= javascript_include_tag 'jquery' %>
+<%= stylesheet_link_tag 'flashbox' %>
+<%= javascript_include_tag 'flashbox' %>
+<%= flashbox_init %>
