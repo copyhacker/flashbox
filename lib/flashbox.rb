@@ -14,6 +14,8 @@ module Flashbox
       add_feedback(message, 'error')
     end
     
+  protected
+    
     # Add to the queue of feedback to be rendered to the user.
     def add_feedback(message, level)
       flash[FLASH_KEY] = [ message, level ]
@@ -37,6 +39,29 @@ module Flashbox
         
         script 
       end
+    end
+  end
+
+
+  module JavaScriptGeneratorMethods
+    def add_info(message)
+      add_feedback(message, 'info')
+    end
+    
+    def add_warning(message)
+      add_feedback(message, 'warning')
+    end
+    
+    def add_error(message)
+      add_feedback(message, 'error')
+    end
+    
+    
+  protected
+  
+    # Add to the queue of feedback to be rendered to the user.
+    def add_feedback(message, level)
+      self << "jQuery.facebox('#{message}', 'feedback #{level}');"
     end
   end
 end

@@ -16,6 +16,11 @@ add_info('Interesting information')
 add_warning('Watch out!')
 add_error('Everything broken!')
 
+RJS:
+page.add_info('AJAX flashbox!')
+page.add_warning('AJAX is hard to debug')
+page.add_error('Oops, you broke it!')
+
 
 Application layout:
 <%= javascript_include_tag 'jquery' %>
